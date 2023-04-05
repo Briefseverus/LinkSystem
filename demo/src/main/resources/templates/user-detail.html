@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User Detail</title>
+</head>
+<body>
+    <h1>User Detail</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Domain</th>
+            <th>Experience</th>
+        </tr>
+        <tr>
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.domain}"></td>
+            <td th:text="${user.exp}"></td>
+        </tr>
+    </table>
+
+    <h2>Received Data</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Region</th>
+            <th>IP Address</th>
+        </tr>
+        <tr th:each="receivedData : ${receivedDataList}">
+            <td th:text="${receivedData.id}"></td>
+            <td th:text="${receivedData.email}"></td>
+            <td th:text="${receivedData.password}"></td>
+            <td th:text="${receivedData.region}"></td>
+            <td th:text="${receivedData.ipAddress}"></td>
+        </tr>
+    </table>
+</body>
+</html>

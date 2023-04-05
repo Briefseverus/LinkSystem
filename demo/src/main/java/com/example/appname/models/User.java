@@ -1,17 +1,26 @@
 package com.example.appname.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
-import java.util.Date;
+
+
 import java.util.List;
+
+import org.springframework.context.annotation.Lazy;
+
 
 @Entity
 @Table(name = "users")
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +30,7 @@ public class User {
 
     private String pass;
 
-    private Date exp;
+    private int exp;
 
     @OneToMany(mappedBy = "user")
     private List<Link> links;
@@ -31,6 +40,11 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<ReceivedData> receivedData;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_role")
+    private Role role;
+
+    public User() {}
     public int getId() {
         return id;
     }
@@ -55,15 +69,21 @@ public class User {
         this.pass = pass;
     }
 
-    public Date getExp() {
-        return exp;
+    public Role getRole() {
+        return role;
     }
 
-    public void setExp(Date exp) {
-        this.exp = exp;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
-    public List<Link> getLinks() {
+    public int getExp() {
+		return exp;
+	}
+	public void setExp(int exp) {
+		this.exp = exp;
+	}
+	public List<Link> getLinks() {
         return links;
     }
 
@@ -90,5 +110,8 @@ public class User {
 	public User orElse(Object object) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	public boolean isAdmin() {
+	    return this.getRole().getName().equals("AD");
 	}
 }

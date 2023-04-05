@@ -1,26 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Admin Dashboard</title>
+    <title>Admin Page</title>
 </head>
 <body>
-    <h1>Welcome to the Admin Dashboard</h1>
-    
+    <h1>Admin Page</h1>
     <table>
         <thead>
             <tr>
                 <th>User ID</th>
-                <th>Email</th>
-                <th>Region</th>
-                <th>IP Address</th>
+                <th>Username</th>
+                <th>Links</th>
+                <th>Received Data</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="adminData : ${adminDataList}">
-                <td th:text="${adminData.user.id}"></td>
-                <td th:text="${adminData.email}"></td>
-                <td th:text="${adminData.region}"></td>
-                <td th:text="${adminData.ipAddr}"></td>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td>
+                    <a th:href="@{'/user/' + ${user.id} + '/links'}">View Links</a>
+                </td>
+                <td>
+                    <a th:href="@{'/user/' + ${user.id} + '/received-data'}">View Received Data</a>
+                </td>
             </tr>
         </tbody>
     </table>

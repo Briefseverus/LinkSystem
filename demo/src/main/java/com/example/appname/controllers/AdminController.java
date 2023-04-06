@@ -29,6 +29,7 @@ public class AdminController {
 		// Get user by ID
 		User user = userService.findUserById(id);
 		model.addAttribute("user", user);
+		
 
 		return "user-detail";
 	}

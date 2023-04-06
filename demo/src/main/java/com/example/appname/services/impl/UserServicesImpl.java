@@ -7,6 +7,7 @@ import com.example.appname.repositories.UserRepo;
 import com.example.appname.services.UserServices;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,8 @@ public class UserServicesImpl implements UserServices {
     }
     @Override
     public User findUserById(int id) {
-        return userRepository.findById(id).orElse(null);
+        Optional<User> userOptional = userRepository.findById(id);
+        return userOptional.orElse(null);
     }
 
     public Iterable<User> findAllUsers() {

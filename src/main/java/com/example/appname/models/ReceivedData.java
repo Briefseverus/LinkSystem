@@ -1,7 +1,6 @@
 package com.example.appname.models;
 
-
-
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -18,15 +17,20 @@ public class ReceivedData {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "email")
     private String email;
 
+    @Column(name = "pass")
     private String pass;
 
+    @Column(name = "region")
     private String region;
-
+    
+    @Column(name = "ip_addr")
     private String ipAddr;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
 

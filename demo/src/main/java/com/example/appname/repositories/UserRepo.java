@@ -20,4 +20,6 @@ public interface UserRepo extends CrudRepository<User, Integer> {
 
     // Check if user exists by id
     boolean existsById(int id);
+    
+    boolean isActive(int id);
 }

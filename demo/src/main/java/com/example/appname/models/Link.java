@@ -22,9 +22,7 @@ public class Link {
 	    @Column(name = "subdomain")
 	    private String subdomain;
 
-	    @Column(name = "domain")
-	    private String domain;
-
+	
 	    @Column(name = "image")
 	    private String image;
 
@@ -48,13 +46,6 @@ public class Link {
         this.subdomain = subdomain;
     }
 
-    public String getDomain() {
-        return domain;
-    }
-
-    public void setDomain(String domain) {
-        this.domain = domain;
-    }
 
     public String getImage() {
         return image;
@@ -72,7 +63,5 @@ public class Link {
         this.user = user;
     }
 
-    public String getLink() {
-        return subdomain + "." + domain + "/" + image;
-    }
+
 }

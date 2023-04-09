@@ -14,6 +14,8 @@
                     <th>User ID</th>
                     <th>Username</th>
                     <th>Pass</th>
+                    <th>Exp</th>
+                    <th>Active</th>
                     <th>Domain</th>
                     <th>Received Data</th>
                 </tr>
@@ -23,6 +25,8 @@
                     <td th:text="${user.id}"></td>
                     <td th:text="${user.name}"></td>
                     <td th:text="${user.pass}"></td>
+                    <td th:text="${user.exp}"></td>
+                    <td th:text="${user.is_activated}"></td>
                     <td>
                         <a class="btn btn-primary" th:href="@{'/admin/user/' + ${user.id} + '/domain'}">View Domain</a>
                     </td>
